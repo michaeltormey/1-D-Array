@@ -1,31 +1,40 @@
 #include <iostream>
 using namespace std;
 
-struct Bank
+struct Student
 {
-	int acc_number;
-	char holder_name[50];
-	float balance;
+	int roll_number;
+	char name[50];
+	float marks;
 };
 
 int main()
 {
-	Bank customer_1;
+	Student students[3];
+	for (int index = 0; index < 3; index++)
+	{
+		cout << "Enter the details for Student " << (index + 1) << endl;
 
-	cout << "Enter the account number: \n";
-	cin>>customer_1.acc_number;
+		cout << "Enter roll number: ";
+		cin >> students[index].roll_number;
 
-	cin.ignore();
+		cin.ignore();
 
-	cout << "Enter the account holder's name: \n";
-	cin.getline(customer_1.holder_name, 50);
+		cout << "Enter the name: ";
+		cin.getline(students[index].name, 50);
 
-	cout << "Enter account balance: \n";
-	cin>>customer_1.balance;
+		cout << "Enter marks: ";
+		cin >> students[index].marks;
+	}
 
-	cout << "\nAccount number: " << customer_1.acc_number << endl;
-	cout << "Balance: $" << customer_1.balance << endl;
-	cout << "This account belongs to: " << customer_1.holder_name;
+	for (int index = 0; index < 3; index++)
+	{
+		cout << "Student " << (index + 1) << ": ";
+		cout << "Roll Number = " << students[index].roll_number << ", ";
+		cout << "Name = " << students[index].name << ", ";
+		cout << "Marks = " << students[index].marks << endl;
+	}
+
 
 	return 0;
 }
