@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+class LibraryBook
+{
+private:
+	string book_title;
+	int copies_available;
+
+public:
+
+	LibraryBook()
+	{
+		copies_available = 3; 
+		book_title = "unknown";
+	}
+
+
+	void set_title(string new_title)
+	{
+		if (new_title.size() > 0)
+		{
+			book_title = new_title;
+		}
+	}
+
+	string get_title()
+	{
+		return book_title;
+	}
+
+	int get_copies()
+	{
+		return copies_available;
+	}
+
+	void borrow_book()
+	{
+		if (copies_available > 0)
+		{
+			copies_available -= 1;
+		}
+	}
+};
+
+int main()
+{
+	LibraryBook book;
+
+	string input_title;
+	int borrow_count;
+
+	cout << "Input the title of your desired book:\n";
+	cin >> input_title;
+
+	cout << "How many of these book would you like to borrow?\n";
+	cin >> borrow_count;
+
+	for (int index = 0; index < borrow_count; index++)
+	{
+		book.borrow_book();
+	}
+
+	cout << "Title: " << book.get_title() << endl;
+	cout << "Copies left: " << book.get_copies() << endl;
+
+
+
+	return 0;
+}
