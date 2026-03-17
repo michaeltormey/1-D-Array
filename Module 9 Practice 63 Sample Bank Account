@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+private:
+    float balance;
+
+public:
+    BankAccount() {
+        balance = 0;
+    }
+
+    void deposit(float amount) {
+        if (amount > 0)
+            balance += amount;
+    }
+
+    void withdraw(float amount) {
+        if (amount <= balance)
+            balance -= amount;
+        else
+            cout << "Insufficient balance!\n";
+    }
+
+    void display_balance() {
+        cout << "Balance: " << balance << endl;
+    }
+};
+
+int main() {
+    BankAccount acc;
+    acc.deposit(500);
+    acc.withdraw(200);
+    acc.display_balance();
+    return 0;
+}
