@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class ShoppingItem {
+private:
+    string item_name;
+    float price;
+    int quantity;
+
+public:
+    void set_item(string name, float p, int q) {
+        if (p > 0 && q > 0) {
+            item_name = name;
+            price = p;
+            quantity = q;
+        }
+    }
+
+    float get_total_cost() {
+        return price * quantity;
+    }
+
+    void display_bill() {
+        cout << "Item: " << item_name << endl;
+        cout << "Total Cost: " << get_total_cost() << endl;
+    }
+};
+
+int main() {
+    ShoppingItem item;
+    item.set_item("Book", 10.5, 3);
+    item.display_bill();
+    return 0;
+}
