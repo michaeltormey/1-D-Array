@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+class WeatherReport {
+private:
+    float temp[7][2];
+
+public:
+    void input_temperature() {
+        for (int i = 0; i < 7; i++) {
+            cin >> temp[i][0] >> temp[i][1];
+        }
+    }
+
+    void display_temperature() {
+        for (int i = 0; i < 7; i++) {
+            cout << "Day " << i + 1 << ": "
+                 << temp[i][0] << ", " << temp[i][1] << endl;
+        }
+    }
+
+    void display_hottest_day() {
+        float max_avg = 0;
+        int day = 0;
+
+        for (int i = 0; i < 7; i++) {
+            float avg = (temp[i][0] + temp[i][1]) / 2;
+            if (avg > max_avg) {
+                max_avg = avg;
+                day = i;
+            }
+        }
+
+        cout << "Hottest Day: " << day + 1 << endl;
+    }
+};
+
+int main() {
+    WeatherReport wr;
+    wr.input_temperature();
+    wr.display_temperature();
+    wr.display_hottest_day();
+    return 0;
+}
