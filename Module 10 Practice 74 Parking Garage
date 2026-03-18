@@ -1,0 +1,102 @@
+#include <iostream>
+using namespace std;
+
+enum SpotStatus { EMPTY, OCCUPIED, RESERVED };
+
+// convert enum to letter
+char toChar(SpotStatus s) {
+    if (s == EMPTY) return 'E';
+    if (s == OCCUPIED) return 'O';
+    return 'R';
+}
+
+class ParkingGarage {
+private:
+    SpotStatus garage[3][4];
+    int parked_count[3];
+
+public:
+    ParkingGarage() {
+        // initialize everything
+        for (int i = 0; i < 3; i++) {
+            parked_count[i] = 0;
+            for (int j = 0; j < 4; j++) {
+                garage[i][j] = EMPTY;
+            }
+        }
+
+        // special rule
+        garage[0][0] = RESERVED;
+    }
+
+    void park(int f, int s) {
+        if (garage[f][s] == EMPTY) {
+            garage[f][s] = OCCUPIED;
+            parked_count[f]++;
+        }
+    }
+
+    void leave(int f, int s) {
+        if (garage[f][s] == OCCUPIED) {
+            garage[f][s] = EMPTY;
+            parked_count[f]--;
+        }
+    }
+
+    void reserve(int f, int s) {
+        if (garage[f][s] == EMPTY) {
+            garage[f][s] = RESERVED;
+        }
+    }
+
+    void print() {
+        cout << "Garage Map:\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                cout << toChar(garage[i][j]) << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    void print_counts() {
+        cout << "Parked Count Per Floor:\n";
+        for (int i = 0; i < 3; i++) {
+            cout << "Floor " << i << ": " << parked_count[i] << endl;
+        }
+    }
+
+    void count_empty() {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (garage[i][j] == EMPTY)
+                    count++;
+            }
+        }
+        cout << "Total empty spots: " << count << endl;
+    }
+};
+
+int main() {
+    ParkingGarage pg;
+
+    int n;
+    cin >> n;
+
+    while (n--) {
+        char op;
+        int f, s;
+        cin >> op >> f >> s;
+
+        if (op == 'P') pg.park(f, s);
+        else if (op == 'L') pg.leave(f, s);
+        else if (op == 'R') pg.reserve(f, s);
+    }
+
+    pg.print();
+    pg.print_counts();
+    pg.count_empty();
+
+    return 0;
+}
