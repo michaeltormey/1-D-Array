@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class PhoneBattery {
+private:
+    int battery_level;
+
+public:
+    PhoneBattery() {
+        battery_level = 50;
+    }
+
+    void charge(int amount) {
+        battery_level += amount;
+        if (battery_level > 100)
+            battery_level = 100;
+    }
+
+    void use_phone(int minutes) {
+        battery_level -= minutes;
+        if (battery_level < 0)
+            battery_level = 0;
+    }
+
+    void display_battery() {
+        cout << "Battery Level: " << battery_level << "%" << endl;
+    }
+};
+
+int main() {
+    PhoneBattery p;
+    p.charge(30);
+    p.use_phone(20);
+    p.display_battery();
+    return 0;
+}
