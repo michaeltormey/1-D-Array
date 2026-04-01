@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Game {
+private:
+    int score;
+
+public:
+    void setScore(int s) {
+        score = s;
+    }
+
+    int getScore() {
+        return score;
+    }
+};
+
+class Player : public Game {
+public:
+    string name;
+
+    void display() {
+        cout << "----- Game Result -----" << endl;
+        cout << "Player: " << name << endl;
+        cout << "Score: " << getScore() << endl;
+
+        if (getScore() >= 80)
+            cout << "Level: Winner Zone" << endl;
+        else
+            cout << "Level: Try Again" << endl;
+    }
+};
+
+int main() {
+    Player p;
+    int score;
+
+    cout << "Enter player name: ";
+    cin >> p.name;
+
+    cout << "Enter score: ";
+    cin >> score;
+
+    p.setScore(score);
+    p.display();
+
+    return 0;
+}
