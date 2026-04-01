@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person {
+public:
+    string name;
+};
+
+class Student : public Person {
+public:
+    int roll_number;
+
+    void display() {
+        cout << "Student Name: " << name << endl;
+        cout << "Roll Number: " << roll_number << endl;
+    }
+};
+
+class Teacher : public Person {
+public:
+    string subject_name;
+
+    void display() {
+        cout << "Teacher Name: " << name << endl;
+        cout << "Subject: " << subject_name << endl;
+    }
+};
+
+int main() {
+    Student s;
+    Teacher t;
+
+    cin >> s.name >> s.roll_number;
+    cin >> t.name >> t.subject_name;
+
+    s.display();
+    t.display();
+
+    return 0;
+}
