@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person {
+private:
+    int age;
+
+public:
+    void setAge(int a) {
+        age = a;
+    }
+
+    int getAge() {
+        return age;
+    }
+};
+
+class Student : public Person {
+public:
+    string name;
+
+    void display() {
+        cout << "------ Student ID Card ------" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << getAge() << endl;
+        cout << "Status: Active Student" << endl;
+    }
+};
+
+int main() {
+    Student s;
+    int age;
+
+    cout << "Enter student name: ";
+    cin >> s.name;
+
+    cout << "Enter age: ";
+    cin >> age;
+
+    s.setAge(age);
+    s.display();
+
+    return 0;
+}
