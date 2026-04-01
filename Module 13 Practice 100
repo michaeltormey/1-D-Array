@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Visitor {
+private:
+    int visitor_id;
+    string city;
+
+public:
+    void setVisitorId(int id) {
+        visitor_id = id;
+    }
+
+    int getVisitorId() {
+        return visitor_id;
+    }
+
+    void setCity(string c) {
+        city = c;
+    }
+
+    string getCity() {
+        return city;
+    }
+};
+
+class PremiumVisitor : public Visitor {
+public:
+    string name, pass_type, locker;
+    int rides, guests, spending;
+
+    void display() {
+        cout << "****************************************" << endl;
+        cout << "     ADVENTURE PARK PREMIUM PASS        " << endl;
+        cout << "****************************************" << endl;
+
+        cout << "Visitor Name         : " << name << endl;
+        cout << "Visitor ID           : " << getVisitorId() << endl;
+        cout << "City                 : " << getCity() << endl;
+        cout << "Pass Type            : " << pass_type << endl;
+        cout << "Rides Selected       : " << rides << endl;
+        cout << "Guests Count         : " << guests << endl;
+        cout << "Total Spending       : " << spending << endl;
+        cout << "Locker Required      : " << locker << endl;
+
+        if (guests > 3)
+            cout << "Lounge Access        : Yes" << endl;
+        else
+            cout << "Lounge Access        : No" << endl;
+
+        if (spending >= 3000)
+            cout << "Food Coupon          : Eligible" << endl;
+        else
+            cout << "Food Coupon          : Not Eligible" << endl;
+
+        if (pass_type == "Gold" || pass_type == "Platinum")
+            cout << "Visitor Category     : Premium Fast Track" << endl;
+        else
+            cout << "Visitor Category     : Standard Premium" << endl;
+
+        cout << "Reminder             : Please arrive 30 minutes early" << endl;
+        cout << "****************************************" << endl;
+    }
+};
+
+int main() {
+    PremiumVisitor v;
+    int id;
+
+    cout << "Enter visitor name: ";
+    cin >> v.name;
+
+    cout << "Enter visitor ID: ";
+    cin >> id;
+    v.setVisitorId(id);
+
+    cout << "Enter city: ";
+    cin >> v.getCity(); // (NOTE: slides often simplify, but this line is usually setCity)
+
+    v.setCity(v.getCity());
+
+    cout << "Enter pass type: ";
+    cin >> v.pass_type;
+
+    cout << "Enter number of rides selected: ";
+    cin >> v.rides;
+
+    cout << "Enter number of guests: ";
+    cin >> v.guests;
+
+    cout << "Enter total spending: ";
+    cin >> v.spending;
+
+    cout << "Enter locker required (Yes/No): ";
+    cin >> v.locker;
+
+    v.display();
+
+    return 0;
+}
