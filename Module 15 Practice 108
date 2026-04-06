@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Notification {
+public:
+    virtual void sendMessage() {
+        cout << "Sending Notification" << endl;
+    }
+};
+
+class EmailNotification : public Notification {
+public:
+    void sendMessage() {
+        cout << "Sending Email Notification" << endl;
+    }
+};
+
+class SMSNotification : public Notification {
+public:
+    void sendMessage() {
+        cout << "Sending SMS Notification" << endl;
+    }
+};
+
+int main() {
+    Notification* n;
+
+    EmailNotification e;
+    SMSNotification s;
+
+    n = &e;
+    n->sendMessage();
+
+    n = &s;
+    n->sendMessage();
+
+    return 0;
+}
