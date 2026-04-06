@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class Staff {
+public:
+    void showRole() {
+        cout << "Staff member" << endl;
+    }
+};
+
+class Doctor : public Staff {
+public:
+    void showRole() {
+        cout << "Doctor treats patients and gives prescriptions." << endl;
+    }
+};
+
+class Nurse : public Staff {
+public:
+    void showRole() {
+        cout << "Nurse cares for patients and assists doctors." << endl;
+    }
+};
+
+int main() {
+    Doctor d;
+    Nurse n;
+
+    d.showRole();
+    n.showRole();
+
+    return 0;
+}
