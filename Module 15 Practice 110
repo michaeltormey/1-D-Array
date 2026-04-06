@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class Appliance {
+public:
+    virtual void turnOn() = 0;
+};
+
+class Fan : public Appliance {
+public:
+    void turnOn() {
+        cout << "Fan starts rotating" << endl;
+    }
+};
+
+class AirConditioner : public Appliance {
+public:
+    void turnOn() {
+        cout << "AirConditioner starts cooling" << endl;
+    }
+};
+
+int main() {
+    Fan f;
+    AirConditioner ac;
+
+    f.turnOn();
+    ac.turnOn();
+
+    return 0;
+}
