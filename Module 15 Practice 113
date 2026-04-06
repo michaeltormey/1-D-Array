@@ -1,0 +1,138 @@
+#include <iostream>
+using namespace std;
+
+class BillCalculator {
+public:
+    int calculateBill(int product_price, int shipping_charge) {
+        return product_price + shipping_charge;
+    }
+
+    double calculateBill(double product_price, double tax_rate) {
+        return product_price + (product_price * tax_rate);
+    }
+
+    double calculateBill(double product_price, double tax_rate, double discount) {
+        return (product_price + (product_price * tax_rate)) - discount;
+    }
+};
+
+class PaymentMethod {
+protected:
+    string customer_name;
+    double amount;
+    string transaction_id;
+
+public:
+    void setDetails(string name, double amt, string id) {
+        customer_name = name;
+        amount = amt;
+        transaction_id = id;
+    }
+
+    void displayPaymentDetails() {
+        cout << "Customer Name: " << customer_name << endl;
+        cout << "Transaction ID: " << transaction_id << endl;
+        cout << "Amount: " << amount << endl;
+    }
+
+    virtual void pay() = 0;
+};
+
+class UPIPayment : public PaymentMethod {
+private:
+    string upi_id;
+
+public:
+    void setUPI(string id) {
+        upi_id = id;
+    }
+
+    void pay() {
+        cout << "Payment Method: UPI" << endl;
+        cout << "UPI ID: " << upi_id << endl;
+        cout << "UPI payment successful" << endl;
+    }
+};
+
+class CardPayment : public PaymentMethod {
+private:
+    string bank_name;
+
+public:
+    void setBank(string name) {
+        bank_name = name;
+    }
+
+    void pay() {
+        cout << "Payment Method: Card" << endl;
+        cout << "Bank Name: " << bank_name << endl;
+        cout << "Card payment successful" << endl;
+    }
+};
+
+class WalletPayment : public PaymentMethod {
+private:
+    string wallet_name;
+
+public:
+    void setWallet(string name) {
+        wallet_name = name;
+    }
+
+    void pay() {
+        cout << "Payment Method: Wallet" << endl;
+        cout << "Wallet Name: " << wallet_name << endl;
+        cout << "Wallet payment successful" << endl;
+    }
+};
+
+int main() {
+    BillCalculator b;
+
+    string name, upi, bank, wallet;
+    int product_price, shipping;
+    double tax, discount;
+
+    cin >> name >> product_price >> shipping >> tax >> discount;
+    cin >> upi >> bank >> wallet;
+
+    int total1 = b.calculateBill(product_price, shipping);
+    double total2 = b.calculateBill((double)product_price, tax);
+    double total3 = b.calculateBill((double)product_price, tax, discount);
+
+    cout << "----- BILL DETAILS -----" << endl;
+    cout << "Customer Name: " << name << endl;
+    cout << "Total using product price and shipping: " << total1 << endl;
+    cout << "Total using product price and tax: " << total2 << endl;
+    cout << "Total using product price, tax, and discount: " << total3 << endl;
+
+    PaymentMethod* p;
+
+    UPIPayment u;
+    u.setDetails(name, total3, "TXN1001");
+    u.setUPI(upi);
+
+    CardPayment c;
+    c.setDetails(name, total3, "TXN1002");
+    c.setBank(bank);
+
+    WalletPayment w;
+    w.setDetails(name, total3, "TXN1003");
+    w.setWallet(wallet);
+
+    cout << "----- PAYMENT DETAILS -----" << endl;
+
+    p = &u;
+    p->displayPaymentDetails();
+    p->pay();
+
+    p = &c;
+    p->displayPaymentDetails();
+    p->pay();
+
+    p = &w;
+    p->displayPaymentDetails();
+    p->pay();
+
+    return 0;
+}
