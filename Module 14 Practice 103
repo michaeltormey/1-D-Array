@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class StorageBox {
+private:
+    int item_count;
+
+public:
+    StorageBox(int items) {
+        item_count = items;
+    }
+
+    StorageBox operator/(int divisor) {
+        return StorageBox(item_count / divisor);
+    }
+
+    void display() {
+        cout << "Items after division: " << item_count << endl;
+    }
+};
+
+int main() {
+    int items, divisor;
+    cin >> items >> divisor;
+
+    StorageBox box1(items);
+    StorageBox box2 = box1 / divisor;
+
+    box2.display();
+
+    return 0;
+}
