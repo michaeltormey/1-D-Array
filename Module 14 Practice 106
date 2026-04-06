@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Vehicle {
+public:
+    void showType() {
+        cout << "Vehicle is used for transportation." << endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void showType() {
+        cout << "Car is a four-wheeler vehicle." << endl;
+    }
+};
+
+class Bike : public Vehicle {
+public:
+    void showType() {
+        cout << "Bike is a two-wheeler vehicle." << endl;
+    }
+};
+
+int main() {
+    Car c;
+    Bike b;
+
+    c.showType();
+    b.showType();
+
+    Vehicle* v;
+    v = &c;
+    v->showType(); // shows base version (no virtual)
+
+    return 0;
+}
