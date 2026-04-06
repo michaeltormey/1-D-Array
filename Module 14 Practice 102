@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class ResultAnalyzer {
+public:
+    int calculateResult(int m1, int m2) {
+        return m1 + m2;
+    }
+
+    int calculateResult(int m1, int m2, int m3) {
+        return m1 + m2 + m3;
+    }
+
+    double calculateResult(double total, int subjects) {
+        return total / subjects;
+    }
+};
+
+int main() {
+    ResultAnalyzer obj;
+
+    int m1, m2, m3;
+    cin >> m1 >> m2 >> m3;
+
+    int total2 = obj.calculateResult(m1, m2);
+    int total3 = obj.calculateResult(m1, m2, m3);
+    double avg = obj.calculateResult((double)total3, 3);
+
+    cout << "Total of 2 subjects: " << total2 << endl;
+    cout << "Total of 3 subjects: " << total3 << endl;
+    cout << "Average marks: " << avg << endl;
+
+    return 0;
+}
