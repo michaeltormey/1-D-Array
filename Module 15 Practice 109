@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class OrderStatus {
+public:
+    virtual void showStatus() {
+        cout << "Order status unknown" << endl;
+    }
+};
+
+class Preparing : public OrderStatus {
+public:
+    void showStatus() {
+        cout << "Order is being prepared" << endl;
+    }
+};
+
+class OutForDelivery : public OrderStatus {
+public:
+    void showStatus() {
+        cout << "Order is out for delivery" << endl;
+    }
+};
+
+class Delivered : public OrderStatus {
+public:
+    void showStatus() {
+        cout << "Order has been delivered" << endl;
+    }
+};
+
+int main() {
+    OrderStatus* o;
+
+    Preparing p;
+    OutForDelivery d1;
+    Delivered d2;
+
+    o = &p;
+    o->showStatus();
+
+    o = &d1;
+    o->showStatus();
+
+    o = &d2;
+    o->showStatus();
+
+    return 0;
+}
