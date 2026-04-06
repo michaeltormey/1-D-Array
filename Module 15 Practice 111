@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class Course {
+public:
+    virtual void startClass() = 0;
+};
+
+class ProgrammingCourse : public Course {
+public:
+    void startClass() {
+        cout << "Programming class has started" << endl;
+    }
+};
+
+class MathCourse : public Course {
+public:
+    void startClass() {
+        cout << "Math class has started" << endl;
+    }
+};
+
+int main() {
+    Course* c;
+
+    ProgrammingCourse p;
+    MathCourse m;
+
+    c = &p;
+    c->startClass();
+
+    c = &m;
+    c->startClass();
+
+    return 0;
+}
