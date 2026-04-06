@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class Ride {
+public:
+    virtual void bookRide() = 0;
+};
+
+class BikeRide : public Ride {
+public:
+    void bookRide() {
+        cout << "Bike ride booked successfully" << endl;
+    }
+};
+
+class CarRide : public Ride {
+public:
+    void bookRide() {
+        cout << "Car ride booked successfully" << endl;
+    }
+};
+
+int main() {
+    Ride* r;
+
+    BikeRide b;
+    CarRide c;
+
+    r = &b;
+    r->bookRide();
+
+    r = &c;
+    r->bookRide();
+
+    return 0;
+}
