@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+class EmployeeSalary {
+private:
+    int salary;
+
+public:
+    EmployeeSalary(int s) {
+        salary = s;
+    }
+
+    EmployeeSalary operator+(EmployeeSalary other) {
+        return EmployeeSalary(salary + other.salary);
+    }
+
+    bool operator>(EmployeeSalary other) {
+        return salary > other.salary;
+    }
+
+    void display() {
+        cout << "Total salary: " << salary << endl;
+    }
+
+    int getSalary() {
+        return salary;
+    }
+};
+
+int main() {
+    int s1, s2;
+    cin >> s1 >> s2;
+
+    EmployeeSalary e1(s1), e2(s2);
+
+    EmployeeSalary total = e1 + e2;
+    total.display();
+
+    if (e1 > e2)
+        cout << "First employee has higher salary." << endl;
+    else
+        cout << "Second employee has higher salary." << endl;
+
+    return 0;
+}
