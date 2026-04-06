@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+private:
+    double balance;
+
+public:
+    BankAccount(double b) {
+        balance = b;
+    }
+
+    bool operator==(BankAccount other) {
+        return balance == other.balance;
+    }
+};
+
+int main() {
+    double b1, b2;
+    cin >> b1 >> b2;
+
+    BankAccount acc1(b1), acc2(b2);
+
+    if (acc1 == acc2)
+        cout << "Both accounts have the same balance" << endl;
+    else
+        cout << "Balances are different" << endl;
+
+    return 0;
+}
