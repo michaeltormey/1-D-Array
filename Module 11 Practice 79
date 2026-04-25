@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Movie
+{
+private:
+    string movie_name;
+    float ticket_price;
+
+public:
+    void setMovie(string name, float price);
+    void displayMovie();
+};
+
+void Movie::setMovie(string name, float price)
+{
+    movie_name = name;
+    ticket_price = price;
+}
+
+void Movie::displayMovie()
+{
+    cout << "Movie Name: " << movie_name << endl;
+    cout << "Ticket Price: " << ticket_price << endl;
+}
+
+int main()
+{
+    Movie m;
+    string name;
+    float price;
+
+    getline(cin, name);
+    cin >> price;
+
+    m.setMovie(name, price);
+    m.displayMovie();
+
+    return 0;
+}
