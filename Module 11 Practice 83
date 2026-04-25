@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class Exam
+{
+private:
+    float marks;
+
+public:
+    void setMarks(float marks);
+    float getMarks() const;
+};
+
+void Exam::setMarks(float marks)
+{
+    this->marks = marks;
+}
+
+float Exam::getMarks() const
+{
+    return marks;
+}
+
+int main()
+{
+    Exam e;
+    float m;
+
+    cin >> m;
+    e.setMarks(m);
+
+    cout << "Marks: " << e.getMarks() << endl;
+
+    return 0;
+}
