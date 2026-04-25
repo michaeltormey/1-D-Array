@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class BankAccount
+{
+private:
+    float balance;
+
+public:
+    BankAccount(float bal);
+    void displayBalance();
+};
+
+BankAccount::BankAccount(float bal)
+{
+    balance = bal;
+}
+
+void BankAccount::displayBalance()
+{
+    cout << "Balance: " << balance << endl;
+}
+
+int main()
+{
+    BankAccount a(500), b(1200), c(50);
+
+    cout << "Account A ";
+    a.displayBalance();
+
+    cout << "Account B ";
+    b.displayBalance();
+
+    cout << "Account C ";
+    c.displayBalance();
+
+    return 0;
+}
