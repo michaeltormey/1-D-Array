@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Fan
+{
+private:
+    float speed;
+
+public:
+    Fan();
+    void setSpeed(float speed);
+    float getSpeed() const;
+};
+
+Fan::Fan()
+{
+    speed = 0;
+}
+
+void Fan::setSpeed(float speed)
+{
+    this->speed = speed;
+}
+
+float Fan::getSpeed() const
+{
+    return speed;
+}
+
+int main()
+{
+    Fan f;
+    float s;
+
+    cin >> s;
+    f.setSpeed(s);
+
+    cout << "Fan Speed: " << f.getSpeed() << endl;
+
+    return 0;
+}
