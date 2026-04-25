@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Product
+{
+private:
+    string product_name;
+    float product_price;
+
+public:
+    void setProduct(string product_name, float product_price);
+    void displayProduct();
+};
+
+void Product::setProduct(string product_name, float product_price)
+{
+    this->product_name = product_name;
+    this->product_price = product_price;
+}
+
+void Product::displayProduct()
+{
+    cout << "Product Name: " << product_name << endl;
+    cout << "Product Price: " << product_price << endl;
+}
+
+int main()
+{
+    Product p;
+    string name;
+    float price;
+
+    getline(cin, name);
+    cin >> price;
+
+    p.setProduct(name, price);
+    p.displayProduct();
+
+    return 0;
+}
