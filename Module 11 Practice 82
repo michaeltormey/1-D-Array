@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+private:
+    string employee_name;
+    float employee_salary;
+
+public:
+    void setEmployee(string employee_name, float employee_salary);
+    void displayEmployee();
+};
+
+void Employee::setEmployee(string employee_name, float employee_salary)
+{
+    this->employee_name = employee_name;
+    this->employee_salary = employee_salary;
+}
+
+void Employee::displayEmployee()
+{
+    cout << employee_name << endl;
+    cout << employee_salary << endl;
+}
+
+int main()
+{
+    Employee e;
+    string name;
+    float salary;
+
+    getline(cin, name);
+    cin >> salary;
+
+    e.setEmployee(name, salary);
+    e.displayEmployee();
+
+    return 0;
+}
