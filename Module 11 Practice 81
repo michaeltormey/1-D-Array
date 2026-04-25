@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Laptop
+{
+private:
+    float price;
+
+public:
+    Laptop(float p);
+    void displayPrice();
+};
+
+Laptop::Laptop(float p)
+{
+    price = p;
+}
+
+void Laptop::displayPrice()
+{
+    cout << price << endl;
+}
+
+int main()
+{
+    Laptop a(45000), b(62000), c(81000);
+
+    cout << "Laptop A Price: ";
+    a.displayPrice();
+
+    cout << "Laptop B Price: ";
+    b.displayPrice();
+
+    cout << "Laptop C Price: ";
+    c.displayPrice();
+
+    return 0;
+}
